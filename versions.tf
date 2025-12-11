@@ -1,0 +1,15 @@
+terraform {
+  required_version = ">= 1.9.0"
+
+  required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "3.6.3"
+    }
+
+    vault = {
+      source  = "hashicorp/vault"
+      version = "4.5.0"
+    }
+  }
+}
