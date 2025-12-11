@@ -8,6 +8,7 @@ This Terraform configuration bootstraps HashiCorp Vault with authentication meth
 ### Vault Provider Permissions
 
 The Vault provider requires a token with sufficient permissions to:
+
 - Create and manage authentication methods (`sys/auth/*`)
 - Create and manage policies (`sys/policies/acl/*`)
 - Create and manage identity entities and groups (`identity/*`)
@@ -18,16 +19,10 @@ The Vault provider requires a token with sufficient permissions to:
 ### Vault Provider Authentication
 
 Configure the Vault provider using environment variables:
+
 - `VAULT_ADDR` - The address of the Vault server (e.g., `https://vault.example.com:8200`)
 - `VAULT_TOKEN` - A Vault token with appropriate permissions
 - `VAULT_NAMESPACE` - (Optional) The Vault namespace to use
-
-Example:
-```bash
-export VAULT_ADDR="https://vault.example.com:8200"
-export VAULT_TOKEN="your-vault-token"
-export VAULT_NAMESPACE="admin"
-```
 
 ## Features
 
@@ -107,7 +102,7 @@ The following resources are used by this module:
 - [vault_jwt_auth_backend.jwt](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/jwt_auth_backend) (resource)
 - [vault_jwt_auth_backend_role.hcp_terraform_vault](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/jwt_auth_backend_role) (resource)
 - [vault_policy.admin](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
-- [vault_policy.root](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
+- [vault_policy.superadmin](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
 
 ## Outputs
 
