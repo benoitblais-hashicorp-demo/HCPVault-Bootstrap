@@ -1,3 +1,4 @@
+<!-- markdownlint-disable-next-line MD041 -->
 ## External Documentation
 
 This configuration was built using the following official documentation:
