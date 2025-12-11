@@ -102,7 +102,7 @@ The following resources are used by this module:
 - [vault_jwt_auth_backend.jwt](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/jwt_auth_backend) (resource)
 - [vault_jwt_auth_backend_role.hcp_terraform_vault](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/jwt_auth_backend_role) (resource)
 - [vault_policy.admin](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
-- [vault_policy.root](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
+- [vault_policy.superadmin](https://registry.terraform.io/providers/hashicorp/vault/4.5.0/docs/resources/policy) (resource)
 
 ## Outputs
 

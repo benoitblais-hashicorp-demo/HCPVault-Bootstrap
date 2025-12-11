@@ -5,10 +5,10 @@ resource "vault_auth_backend" "admin_userpass" {
   description = "Userpass authentication method for administrative access"
 }
 
-# Root policy with full access to Vault
-resource "vault_policy" "root" {
-  name   = "root"
-  policy = file("${path.module}/policies/root.hcl")
+# Superadmin policy with full access to Vault
+resource "vault_policy" "superadmin" {
+  name   = "superadmin"
+  policy = file("${path.module}/policies/superadmin.hcl")
 }
 
 # Admin policy for administrative access
@@ -48,10 +48,10 @@ resource "vault_generic_endpoint" "superadmin_user" {
 
   data_json = jsonencode({
     password = random_password.superadmin_password.result
-    policies = ["default", vault_policy.root.name]
+    policies = ["default", vault_policy.superadmin.name]
   })
 
-  depends_on = [vault_policy.root]
+  depends_on = [vault_policy.superadmin]
 }
 
 # Create admin user in userpass-admin auth method
@@ -116,7 +116,7 @@ resource "vault_jwt_auth_backend" "jwt" {
 resource "vault_jwt_auth_backend_role" "hcp_terraform_vault" {
   backend        = vault_jwt_auth_backend.jwt.path
   role_name      = "hcp-terraform-vault"
-  token_policies = [vault_policy.root.name]
+  token_policies = [vault_policy.superadmin.name]
 
   bound_audiences = [var.jwt_tfc_audience]
   bound_claims = {
