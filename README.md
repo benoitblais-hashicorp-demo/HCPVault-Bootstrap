@@ -5,7 +5,7 @@ This Terraform configuration bootstraps HashiCorp Vault with authentication meth
 
 ## Permissions
 
-### Vault Provider
+### Vault Provider Permissions
 
 The Vault provider requires a token with sufficient permissions to:
 - Create and manage authentication methods (`sys/auth/*`)
@@ -15,7 +15,7 @@ The Vault provider requires a token with sufficient permissions to:
 
 ## Authentication
 
-### Vault Provider
+### Vault Provider Authentication
 
 Configure the Vault provider using environment variables:
 - `VAULT_ADDR` - The address of the Vault server (e.g., `https://vault.example.com:8200`)
