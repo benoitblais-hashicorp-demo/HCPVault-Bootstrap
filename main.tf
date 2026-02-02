@@ -54,41 +54,6 @@ resource "vault_generic_endpoint" "superadmin_user" {
   depends_on = [vault_policy.superadmin]
 }
 
-# Create superadmin group for identity management
-resource "vault_identity_group" "superadmin_group" {
-  name     = "superadmin-group"
-  type     = "internal"
-  policies = [vault_policy.superadmin.name]
-
-  metadata = {
-    description = "Group for superadmin users"
-  }
-}
-
-# Create identity entity for superadmin user
-resource "vault_identity_entity" "superadmin_entity" {
-  name     = "superadmin"
-  policies = [vault_policy.superadmin.name]
-
-  metadata = {
-    description = "Identity entity for superadmin user"
-  }
-}
-
-# Create entity alias to link superadmin user to entity
-resource "vault_identity_entity_alias" "superadmin_alias" {
-  name           = "superadmin"
-  mount_accessor = vault_auth_backend.admin_userpass.accessor
-  canonical_id   = vault_identity_entity.superadmin_entity.id
-}
-
-# Add superadmin entity to superadmin group
-resource "vault_identity_group_member_entity_ids" "superadmin_group_members" {
-  group_id          = vault_identity_group.superadmin_group.id
-  member_entity_ids = [vault_identity_entity.superadmin_entity.id]
-  exclusive         = false
-}
-
 # Create opsadmin user in userpass-admin auth method
 resource "vault_generic_endpoint" "opsadmin_user" {
   path                 = "auth/${vault_auth_backend.admin_userpass.path}/users/opsadmin"
@@ -102,17 +67,6 @@ resource "vault_generic_endpoint" "opsadmin_user" {
   })
 
   depends_on = [vault_policy.opsadmin]
-}
-
-# Create opsadmin group for identity management
-resource "vault_identity_group" "opsadmin_group" {
-  name     = "opsadmin-group"
-  type     = "internal"
-  policies = [vault_policy.opsadmin.name]
-
-  metadata = {
-    description = "Group for administrative users"
-  }
 }
 
 # Create identity entity for superadmin user
@@ -149,18 +103,40 @@ resource "vault_identity_entity_alias" "opsadmin_alias" {
   canonical_id   = vault_identity_entity.opsadmin_entity.id
 }
 
+# Create superadmin group for identity management
+resource "vault_identity_group" "superadmin_group" {
+  name     = "superadmin-group"
+  type     = "internal"
+  policies = [vault_policy.superadmin.name]
+
+  metadata = {
+    description = "Group for superadmin users"
+  }
+}
+
+# Create opsadmin group for identity management
+resource "vault_identity_group" "opsadmin_group" {
+  name     = "opsadmin-group"
+  type     = "internal"
+  policies = [vault_policy.opsadmin.name]
+
+  metadata = {
+    description = "Group for administrative users"
+  }
+}
+
+# Add superadmin entity to superadmin group
+resource "vault_identity_group_member_entity_ids" "superadmin_group_members" {
+  group_id          = vault_identity_group.superadmin_group.id
+  member_entity_ids = [vault_identity_entity.superadmin_entity.id]
+  exclusive         = false
+}
+
 # Add opsadmin entity to opsadmin group
 resource "vault_identity_group_member_entity_ids" "opsadmin_group_members" {
   group_id          = vault_identity_group.opsadmin_group.id
   member_entity_ids = [vault_identity_entity.opsadmin_entity.id]
   exclusive         = false
-}
-
-# Add opsadmin group as a member of itself
-resource "vault_identity_group_member_group_ids" "opsadmin_group_self_member" {
-  group_id         = vault_identity_group.opsadmin_group.id
-  member_group_ids = [vault_identity_group.opsadmin_group.id]
-  exclusive        = false
 }
 
 # Enable JWT auth method
