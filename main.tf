@@ -6,10 +6,10 @@ resource "vault_auth_backend" "admin_userpass" {
 }
 
 # Superadmin policy with full access to Vault
-# resource "vault_policy" "superadmin" {
-#   name   = "superadmin"
-#   policy = file("${path.module}/policies/superadmin.hcl")
-# }
+resource "vault_policy" "superadmin" {
+  name   = "superadmin"
+  policy = file("${path.module}/policies/superadmin.hcl")
+}
 
 # Admin policy for administrative access
 resource "vault_policy" "opsadmin" {

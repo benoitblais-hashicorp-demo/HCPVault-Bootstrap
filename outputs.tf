@@ -24,13 +24,13 @@ output "jwt_role_hcp_terraform_vault" {
   value       = vault_jwt_auth_backend_role.hcp_terraform_vault.role_name
 }
 
-output "superadmin_password" {
-  description = "Password for the superadmin user in userpass-admin auth method"
-  sensitive   = true
-  value       = random_password.superadmin_password.result
-}
+# output "superadmin_password" {
+#   description = "Password for the superadmin user in userpass-admin auth method"
+#   sensitive   = true
+#   value       = random_password.superadmin_password.result
+# }
 
-output "superadmin_username" {
-  description = "Username for the superadmin user in userpass-admin auth method"
-  value       = "superadmin"
-}
+# output "superadmin_username" {
+#   description = "Username for the superadmin user in userpass-admin auth method"
+#   value       = "superadmin"
+# }
