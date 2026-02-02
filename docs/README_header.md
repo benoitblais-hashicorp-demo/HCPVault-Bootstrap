@@ -1,3 +1,4 @@
+
 # HCP Vault Bootstrap
 
 This Terraform configuration bootstraps HashiCorp Vault with authentication methods, policies, users, and groups for administrative access and HCP Terraform integration.
@@ -26,13 +27,13 @@ Configure the Vault provider using environment variables:
 ## Features
 
 - **Userpass Authentication**: Configures userpass auth method at `userpass-admin` path for administrative access
-- **User Management**: Creates two administrative users:
-  - `superadmin` - User with root policy (full access)
-  - `opsadmin` - User with admin policy (administrative capabilities)
+- **User Management**: Creates two administrative users, both fully integrated into Vault's identity system:
+  - `superadmin` - User with superadmin policy (full access), identity entity, group, and alias
+  - `opsadmin` - User with admin policy (administrative capabilities), identity entity, group, and alias
 - **Policy Management**: Manages policies from external HCL files:
-  - Root policy (`policies/root.hcl`) - Full access to all Vault paths
+  - Superadmin policy (`policies/superadmin.hcl`) - Full access to all Vault paths
   - Admin policy (`policies/admins.hcl`) - Administrative permissions
-- **Identity System**: Configures Vault identity entities, groups, and aliases for centralized access management
+- **Identity System**: Configures Vault identity entities, groups, and aliases for both users. The `opsadmin` group is also a member of itself for demonstration of group nesting.
 - **JWT Authentication**: Enables JWT/OIDC authentication for HCP Terraform integration
 - **HCP Terraform Integration**: Configures JWT role for HCP Terraform workloads in the "HCP Vault" project
 - **Random Password Generation**: Generates secure, complex passwords for all users (24 characters with special characters)
