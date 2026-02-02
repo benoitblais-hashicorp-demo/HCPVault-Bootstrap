@@ -80,6 +80,16 @@ resource "vault_identity_group" "opsadmin_group" {
   }
 }
 
+# Create identity entity for superadmin user
+resource "vault_identity_entity" "superadmin_entity" {
+  name     = "superadmin"
+  policies = [vault_policy.superadmin.name]
+
+  metadata = {
+    description = "Identity entity for superadmin user"
+  }
+}
+
 # Create identity entity for opsadmin user
 resource "vault_identity_entity" "opsadmin_entity" {
   name     = "opsadmin"
@@ -88,6 +98,13 @@ resource "vault_identity_entity" "opsadmin_entity" {
   metadata = {
     description = "Identity entity for opsadmin user"
   }
+}
+
+# Create entity alias to link superadmin user to entity
+resource "vault_identity_entity_alias" "superadmin_alias" {
+  name           = "superadmin"
+  mount_accessor = vault_auth_backend.admin_userpass.accessor
+  canonical_id   = vault_identity_entity.superadmin_entity.id
 }
 
 # Create entity alias to link opsadmin user to entity
