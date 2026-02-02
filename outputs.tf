@@ -1,16 +1,16 @@
-output "admin_password" {
-  description = "Password for the admin user in userpass-admin auth method"
+output "opsadmin_password" {
+  description = "Password for the opsadmin user in userpass-admin auth method"
   sensitive   = true
-  value       = random_password.admin_password.result
+  value       = random_password.opsadmin_password.result
 }
 
-output "admin_username" {
-  description = "Username for the admin user in userpass-admin auth method"
-  value       = "admin"
+output "opsadmin_username" {
+  description = "Username for the opsadmin user in userpass-admin auth method"
+  value       = "opsadmin"
 }
 
-output "admin_userpass_path" {
-  description = "Path where the admin userpass authentication method is mounted"
+output "opsadmin_userpass_path" {
+  description = "Path where the opsadmin userpass authentication method is mounted"
   value       = vault_auth_backend.admin_userpass.path
 }
 
