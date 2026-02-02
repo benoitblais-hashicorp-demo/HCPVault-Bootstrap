@@ -18,15 +18,15 @@ resource "vault_policy" "opsadmin" {
 }
 
 # Generate random password for superadmin user
-resource "random_password" "superadmin_password" {
-  length           = 24
-  special          = true
-  min_lower        = 1
-  min_numeric      = 1
-  min_special      = 1
-  min_upper        = 1
-  override_special = "!@#$%^&*()_+-=[]{}|;:,.<>?"
-}
+# resource "random_password" "superadmin_password" {
+#   length           = 24
+#   special          = true
+#   min_lower        = 1
+#   min_numeric      = 1
+#   min_special      = 1
+#   min_upper        = 1
+#   override_special = "!@#$%^&*()_+-=[]{}|;:,.<>?"
+# }
 
 # Generate random password for admin user
 resource "random_password" "opsadmin_password" {
@@ -40,19 +40,19 @@ resource "random_password" "opsadmin_password" {
 }
 
 # Create superadmin user in userpass-admin auth method
-resource "vault_generic_endpoint" "superadmin_user" {
-  path                 = "auth/${vault_auth_backend.admin_userpass.path}/users/superadmin"
-  ignore_absent_fields = true
-  disable_read         = true
-  disable_delete       = true
+# resource "vault_generic_endpoint" "superadmin_user" {
+#   path                 = "auth/${vault_auth_backend.admin_userpass.path}/users/superadmin"
+#   ignore_absent_fields = true
+#   disable_read         = true
+#   disable_delete       = true
 
-  data_json = jsonencode({
-    password = random_password.superadmin_password.result
-    policies = ["default", vault_policy.superadmin.name]
-  })
+#   data_json = jsonencode({
+#     password = random_password.superadmin_password.result
+#     policies = ["default", vault_policy.superadmin.name]
+#   })
 
-  depends_on = [vault_policy.superadmin]
-}
+#   depends_on = [vault_policy.superadmin]
+# }
 
 # Create opsadmin user in userpass-admin auth method
 resource "vault_generic_endpoint" "opsadmin_user" {
@@ -70,14 +70,14 @@ resource "vault_generic_endpoint" "opsadmin_user" {
 }
 
 # Create identity entity for superadmin user
-resource "vault_identity_entity" "superadmin_entity" {
-  name     = "superadmin"
-  policies = [vault_policy.superadmin.name]
+# resource "vault_identity_entity" "superadmin_entity" {
+#   name     = "superadmin"
+#   policies = [vault_policy.superadmin.name]
 
-  metadata = {
-    description = "Identity entity for superadmin user"
-  }
-}
+#   metadata = {
+#     description = "Identity entity for superadmin user"
+#   }
+# }
 
 # Create identity entity for opsadmin user
 resource "vault_identity_entity" "opsadmin_entity" {
@@ -90,11 +90,11 @@ resource "vault_identity_entity" "opsadmin_entity" {
 }
 
 # Create entity alias to link superadmin user to entity
-resource "vault_identity_entity_alias" "superadmin_alias" {
-  name           = "superadmin"
-  mount_accessor = vault_auth_backend.admin_userpass.accessor
-  canonical_id   = vault_identity_entity.superadmin_entity.id
-}
+# resource "vault_identity_entity_alias" "superadmin_alias" {
+#   name           = "superadmin"
+#   mount_accessor = vault_auth_backend.admin_userpass.accessor
+#   canonical_id   = vault_identity_entity.superadmin_entity.id
+# }
 
 # Create entity alias to link opsadmin user to entity
 resource "vault_identity_entity_alias" "opsadmin_alias" {
@@ -104,15 +104,15 @@ resource "vault_identity_entity_alias" "opsadmin_alias" {
 }
 
 # Create superadmin group for identity management
-resource "vault_identity_group" "superadmin_group" {
-  name     = "superadmin-group"
-  type     = "internal"
-  policies = [vault_policy.superadmin.name]
+# resource "vault_identity_group" "superadmin_group" {
+#   name     = "superadmin-group"
+#   type     = "internal"
+#   policies = [vault_policy.superadmin.name]
 
-  metadata = {
-    description = "Group for superadmin users"
-  }
-}
+#   metadata = {
+#     description = "Group for superadmin users"
+#   }
+# }
 
 # Create opsadmin group for identity management
 resource "vault_identity_group" "opsadmin_group" {
@@ -126,11 +126,11 @@ resource "vault_identity_group" "opsadmin_group" {
 }
 
 # Add superadmin entity to superadmin group
-resource "vault_identity_group_member_entity_ids" "superadmin_group_members" {
-  group_id          = vault_identity_group.superadmin_group.id
-  member_entity_ids = [vault_identity_entity.superadmin_entity.id]
-  exclusive         = false
-}
+# resource "vault_identity_group_member_entity_ids" "superadmin_group_members" {
+#   group_id          = vault_identity_group.superadmin_group.id
+#   member_entity_ids = [vault_identity_entity.superadmin_entity.id]
+#   exclusive         = false
+# }
 
 # Add opsadmin entity to opsadmin group
 resource "vault_identity_group_member_entity_ids" "opsadmin_group_members" {
