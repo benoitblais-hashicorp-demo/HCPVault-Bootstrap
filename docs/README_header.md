@@ -28,7 +28,7 @@ Configure the Vault provider using environment variables:
 - **Userpass Authentication**: Configures userpass auth method at `userpass-admin` path for administrative access
 - **User Management**: Creates two administrative users:
   - `superadmin` - User with root policy (full access)
-  - `admin` - User with admin policy (administrative capabilities)
+  - `opsadmin` - User with admin policy (administrative capabilities)
 - **Policy Management**: Manages policies from external HCL files:
   - Root policy (`policies/root.hcl`) - Full access to all Vault paths
   - Admin policy (`policies/admins.hcl`) - Administrative permissions
