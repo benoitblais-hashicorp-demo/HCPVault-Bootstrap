@@ -12,8 +12,8 @@ resource "vault_policy" "superadmin" {
 }
 
 # Admin policy for administrative access
-resource "vault_policy" "admin" {
-  name   = "admin"
+resource "vault_policy" "opsadmin" {
+  name   = "opsadmin"
   policy = file("${path.module}/policies/admins.hcl")
 }
 
@@ -29,7 +29,7 @@ resource "random_password" "superadmin_password" {
 }
 
 # Generate random password for admin user
-resource "random_password" "admin_password" {
+resource "random_password" "opsadmin_password" {
   length           = 24
   special          = true
   min_lower        = 1
@@ -54,53 +54,53 @@ resource "vault_generic_endpoint" "superadmin_user" {
   depends_on = [vault_policy.superadmin]
 }
 
-# Create admin user in userpass-admin auth method
-resource "vault_generic_endpoint" "admin_user" {
-  path                 = "auth/${vault_auth_backend.admin_userpass.path}/users/admin"
+# Create opsadmin user in userpass-admin auth method
+resource "vault_generic_endpoint" "opsadmin_user" {
+  path                 = "auth/${vault_auth_backend.admin_userpass.path}/users/opsadmin"
   ignore_absent_fields = true
   disable_read         = true
   disable_delete       = true
 
   data_json = jsonencode({
-    password = random_password.admin_password.result
-    policies = ["default", vault_policy.admin.name]
+    password = random_password.opsadmin_password.result
+    policies = ["default", vault_policy.opsadmin.name]
   })
 
-  depends_on = [vault_policy.admin]
+  depends_on = [vault_policy.opsadmin]
 }
 
-# Create admin group for identity management
-resource "vault_identity_group" "admin_group" {
-  name     = "admin-group"
+# Create opsadmin group for identity management
+resource "vault_identity_group" "opsadmin_group" {
+  name     = "opsadmin-group"
   type     = "internal"
-  policies = [vault_policy.admin.name]
+  policies = [vault_policy.opsadmin.name]
 
   metadata = {
     description = "Group for administrative users"
   }
 }
 
-# Create identity entity for admin user
-resource "vault_identity_entity" "admin_entity" {
-  name     = "admin"
-  policies = [vault_policy.admin.name]
+# Create identity entity for opsadmin user
+resource "vault_identity_entity" "opsadmin_entity" {
+  name     = "opsadmin"
+  policies = [vault_policy.opsadmin.name]
 
   metadata = {
-    description = "Identity entity for admin user"
+    description = "Identity entity for opsadmin user"
   }
 }
 
-# Create entity alias to link admin user to entity
-resource "vault_identity_entity_alias" "admin_alias" {
-  name           = "admin"
+# Create entity alias to link opsadmin user to entity
+resource "vault_identity_entity_alias" "opsadmin_alias" {
+  name           = "opsadmin"
   mount_accessor = vault_auth_backend.admin_userpass.accessor
-  canonical_id   = vault_identity_entity.admin_entity.id
+  canonical_id   = vault_identity_entity.opsadmin_entity.id
 }
 
-# Add admin entity to admin group
-resource "vault_identity_group_member_entity_ids" "admin_group_members" {
-  group_id          = vault_identity_group.admin_group.id
-  member_entity_ids = [vault_identity_entity.admin_entity.id]
+# Add opsadmin entity to opsadmin group
+resource "vault_identity_group_member_entity_ids" "opsadmin_group_members" {
+  group_id          = vault_identity_group.opsadmin_group.id
+  member_entity_ids = [vault_identity_entity.opsadmin_entity.id]
   exclusive         = false
 }
 
