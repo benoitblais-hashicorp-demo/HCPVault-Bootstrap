@@ -75,7 +75,7 @@ resource "vault_identity_group_member_entity_ids" "platform_admin_group_members"
 # The following resources block create vault-admin users with appropriate policies.
 
 # Vault-admin policy for administrative access.
-resource "vault_policy" "opsadmin" {
+resource "vault_policy" "vault_admin" {
   name   = var.vault_admin_policy_name
   policy = file("${path.module}/policies/vault-admin.hcl")
 }
@@ -103,7 +103,7 @@ resource "vault_generic_endpoint" "vault_admin_user" {
     policies = ["default"]
   })
 
-  depends_on = [vault_policy.opsadmin]
+  depends_on = [vault_policy.vault_admin]
 }
 
 # Create identity entity for vault-admin user.
@@ -196,6 +196,7 @@ resource "tfe_variable" "vault_auth_path" {
 }
 
 resource "tfe_variable" "vault_namespace" {
+  count           = var.vault_variable_set_id != null ? 1 : 0
   key             = "TFC_VAULT_NAMESPACE"
   value           = var.vault_namespace
   variable_set_id = var.vault_variable_set_id
@@ -205,6 +206,7 @@ resource "tfe_variable" "vault_namespace" {
 }
 
 resource "tfe_variable" "vault_provider_auth" {
+  count           = var.vault_variable_set_id != null ? 1 : 0
   key          = "TFC_VAULT_PROVIDER_AUTH"
   value        = "true"
   variable_set_id = var.vault_variable_set_id
@@ -214,6 +216,7 @@ resource "tfe_variable" "vault_provider_auth" {
 }
 
 resource "tfe_variable" "vault_run_role" {
+  count           = var.vault_variable_set_id != null ? 1 : 0
   key          = "TFC_VAULT_RUN_ROLE"
   value        = vault_jwt_auth_backend_role.hcp_terraform_vault.role_name
   variable_set_id = var.vault_variable_set_id
