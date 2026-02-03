@@ -6,10 +6,13 @@ terraform {
       source  = "hashicorp/random"
       version = "3.6.3"
     }
-
     vault = {
       source  = "hashicorp/vault"
       version = "4.5.0"
+    }
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = "0.42.0"
     }
   }
 }
