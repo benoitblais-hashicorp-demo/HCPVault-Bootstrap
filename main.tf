@@ -207,8 +207,8 @@ resource "tfe_variable" "vault_namespace" {
 
 resource "tfe_variable" "vault_provider_auth" {
   count           = var.vault_variable_set_id != null ? 1 : 0
-  key          = "TFC_VAULT_PROVIDER_AUTH"
-  value        = "true"
+  key             = "TFC_VAULT_PROVIDER_AUTH"
+  value           = "true"
   variable_set_id = var.vault_variable_set_id
   category        = "env"
   description     = "Vault provider authentication method for HCP workspace."
@@ -217,8 +217,8 @@ resource "tfe_variable" "vault_provider_auth" {
 
 resource "tfe_variable" "vault_run_role" {
   count           = var.vault_variable_set_id != null ? 1 : 0
-  key          = "TFC_VAULT_RUN_ROLE"
-  value        = vault_jwt_auth_backend_role.hcp_terraform_vault.role_name
+  key             = "TFC_VAULT_RUN_ROLE"
+  value           = vault_jwt_auth_backend_role.hcp_terraform_vault.role_name
   variable_set_id = var.vault_variable_set_id
   category        = "env"
   description     = "Vault run role for HCP workspace."

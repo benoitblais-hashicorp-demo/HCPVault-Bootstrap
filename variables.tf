@@ -91,7 +91,7 @@ variable "platform_admin_group_name" {
 
 variable "platform_admin_policy_name" {
   type        = string
-  description = "(Optional) The name of the platform-admin policy."  
+  description = "(Optional) The name of the platform-admin policy."
   default     = "platform-admin"
 }
 
