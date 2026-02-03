@@ -178,7 +178,7 @@ resource "vault_jwt_auth_backend_role" "hcp_terraform_vault" {
 resource "tfe_variable" "vault_addr" {
   count           = var.vault_variable_set_id != null ? 1 : 0
   key             = "TFC_VAULT_ADDR"
-  value           = provider.vault["vault"].address
+  value           = var.vault_address
   variable_set_id = var.vault_variable_set_id
   category        = "env"
   description     = "Vault server address for HCP workspace authentication."

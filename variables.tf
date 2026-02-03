@@ -157,6 +157,16 @@ variable "vault_namespace" {
   }
 }
 
+variable "vault_address" {
+  type        = string
+  description = "(Required) Vault server address (e.g., https://vault-cluster.hashicorp.cloud:8200). Required for HCP Terraform authentication."
+
+  validation {
+    condition     = can(regex("^https?://[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}(:[0-9]+)?$", var.vault_address))
+    error_message = "Vault address must be a valid HTTP or HTTPS URL."
+  }
+}
+
 variable "vault_userpass_auth_backend_description" {
   type        = string
   description = "(Optional) A description of the userpass auth method."
