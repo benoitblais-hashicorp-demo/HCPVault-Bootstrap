@@ -59,7 +59,13 @@ No modules.
 
 ## Required Inputs
 
-No required inputs.
+The following input variables are required:
+
+### <a name="input_vault_address"></a> [vault\_address](#input\_vault\_address)
+
+Description: (Required) Vault server address (e.g., https://vault-cluster.hashicorp.cloud:8200). Required for HCP Terraform authentication.
+
+Type: `string`
 
 ## Optional Inputs
 
