@@ -28,7 +28,7 @@ variable "vault_userpass_auth_backend_description" {
 
 variable "platform_admin_policy_name" {
   type        = string
-  description = "(Optional) The name of the platform-admin policy."  
+  description = "(Optional) The name of the platform-admin policy."
   default     = "platform-admin"
 }
 
