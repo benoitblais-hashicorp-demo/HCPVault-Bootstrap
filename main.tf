@@ -212,7 +212,7 @@ resource "tfe_variable" "vault_provider_auth" {
   variable_set_id = var.vault_variable_set_id
   category        = "env"
   description     = "Vault provider authentication method for HCP workspace."
-  sensitive       = true
+  sensitive       = false
 }
 
 resource "tfe_variable" "vault_run_role" {
