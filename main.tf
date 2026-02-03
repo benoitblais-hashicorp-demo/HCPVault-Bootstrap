@@ -45,7 +45,7 @@ resource "vault_identity_entity" "platform_admin_entity" {
     description = "Identity entity for ${var.platform_admin_username} user."
   }
 
-  depends_on = [ vault_generic_endpoint.platform_admin_user ]
+  depends_on = [vault_generic_endpoint.platform_admin_user]
 }
 
 # Create entity alias to link platform-admin user to entity.
@@ -210,9 +210,9 @@ resource "tfe_variable" "vault_provider_auth" {
   key          = "TFC_VAULT_PROVIDER_AUTH"
   value        = "true"
   variable_set_id = var.vault_variable_set_id
-  category     = "env"
-  description  = "Vault provider authentication method for HCP workspace."
-  sensitive    = true
+  category        = "env"
+  description     = "Vault provider authentication method for HCP workspace."
+  sensitive       = true
 }
 
 resource "tfe_variable" "vault_run_role" {
@@ -220,7 +220,7 @@ resource "tfe_variable" "vault_run_role" {
   key          = "TFC_VAULT_RUN_ROLE"
   value        = vault_jwt_auth_backend_role.hcp_terraform_vault.role_name
   variable_set_id = var.vault_variable_set_id
-  category     = "env"
-  description  = "Vault run role for HCP workspace."
-  sensitive    = false
+  category        = "env"
+  description     = "Vault run role for HCP workspace."
+  sensitive       = false
 }
