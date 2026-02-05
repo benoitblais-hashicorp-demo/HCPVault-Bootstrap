@@ -33,7 +33,7 @@ resource "vault_generic_endpoint" "platform_admin_user" {
 
   data_json = jsonencode({
     password = random_password.platform_admin_password.result
-    policies = ["default"]
+    policies = ["default", vault_policy.platform_admin.name]
   })
 }
 
@@ -100,7 +100,7 @@ resource "vault_generic_endpoint" "vault_admin_user" {
 
   data_json = jsonencode({
     password = random_password.vault_admin_password.result
-    policies = ["default"]
+    policies = ["default", vault_policy.vault_admin.name]
   })
 
   depends_on = [vault_policy.vault_admin]
