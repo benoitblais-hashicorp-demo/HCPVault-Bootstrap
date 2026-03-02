@@ -47,7 +47,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.9.0)
 
-- <a name="requirement_random"></a> [random](#requirement\_random) (3.6.3)
+- <a name="requirement_random"></a> [random](#requirement\_random) (3.8.1)
 
 - <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.42.0)
 
@@ -251,8 +251,8 @@ Default: `null`
 
 The following resources are used by this module:
 
-- [random_password.platform_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.6.3/docs/resources/password) (resource)
-- [random_password.vault_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.6.3/docs/resources/password) (resource)
+- [random_password.platform_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) (resource)
+- [random_password.vault_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) (resource)
 - [tfe_variable.vault_addr](https://registry.terraform.io/providers/hashicorp/tfe/0.42.0/docs/resources/variable) (resource)
 - [tfe_variable.vault_auth_path](https://registry.terraform.io/providers/hashicorp/tfe/0.42.0/docs/resources/variable) (resource)
 - [tfe_variable.vault_namespace](https://registry.terraform.io/providers/hashicorp/tfe/0.42.0/docs/resources/variable) (resource)
