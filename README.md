@@ -47,7 +47,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.9.0)
 
-- <a name="requirement_random"></a> [random](#requirement\_random) (3.6.3)
+- <a name="requirement_random"></a> [random](#requirement\_random) (3.8.1)
 
 - <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.74.0)
 
