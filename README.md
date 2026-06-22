@@ -49,11 +49,11 @@ The following requirements are needed by this module:
 
 - <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) (>= 1.9.0)
 
-- <a name="requirement_random"></a> [random](#requirement\_random) (3.8.1)
+- <a name="requirement_random"></a> [random](#requirement\_random) (3.9.0)
 
-- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.74.0)
+- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.74.1)
 
-- <a name="requirement_vault"></a> [vault](#requirement\_vault) (4.8.0)
+- <a name="requirement_vault"></a> [vault](#requirement\_vault) (5.7.0)
 
 ## Modules
 
@@ -253,29 +253,29 @@ Default: `null`
 
 The following resources are used by this module:
 
-- [random_password.platform_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) (resource)
-- [random_password.vault_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.8.1/docs/resources/password) (resource)
-- [tfe_variable.vault_addr](https://registry.terraform.io/providers/hashicorp/tfe/0.74.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_auth_path](https://registry.terraform.io/providers/hashicorp/tfe/0.74.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_namespace](https://registry.terraform.io/providers/hashicorp/tfe/0.74.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_provider_auth](https://registry.terraform.io/providers/hashicorp/tfe/0.74.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_run_role](https://registry.terraform.io/providers/hashicorp/tfe/0.74.0/docs/resources/variable) (resource)
-- [vault_auth_backend.userpass](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/auth_backend) (resource)
-- [vault_generic_endpoint.platform_admin_user](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/generic_endpoint) (resource)
-- [vault_generic_endpoint.vault_admin_user](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/generic_endpoint) (resource)
-- [vault_identity_entity.platform_admin_entity](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_entity) (resource)
-- [vault_identity_entity.vault_admin_entity](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_entity) (resource)
-- [vault_identity_entity_alias.platform_admin_alias](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_entity_alias) (resource)
-- [vault_identity_entity_alias.vault_admin_alias](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_entity_alias) (resource)
-- [vault_identity_group.platform_admin_group](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_group) (resource)
-- [vault_identity_group.vault_admin_group](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_group) (resource)
-- [vault_identity_group_member_entity_ids.platform_admin_group_members](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_group_member_entity_ids) (resource)
-- [vault_identity_group_member_entity_ids.vault_admin_group_members](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/identity_group_member_entity_ids) (resource)
-- [vault_jwt_auth_backend.jwt](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/jwt_auth_backend) (resource)
-- [vault_jwt_auth_backend_role.hcp_terraform_vault](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/jwt_auth_backend_role) (resource)
-- [vault_policy.automation](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/policy) (resource)
-- [vault_policy.platform_admin](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/policy) (resource)
-- [vault_policy.vault_admin](https://registry.terraform.io/providers/hashicorp/vault/4.8.0/docs/resources/policy) (resource)
+- [random_password.platform_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.9.0/docs/resources/password) (resource)
+- [random_password.vault_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.9.0/docs/resources/password) (resource)
+- [tfe_variable.vault_addr](https://registry.terraform.io/providers/hashicorp/tfe/0.74.1/docs/resources/variable) (resource)
+- [tfe_variable.vault_auth_path](https://registry.terraform.io/providers/hashicorp/tfe/0.74.1/docs/resources/variable) (resource)
+- [tfe_variable.vault_namespace](https://registry.terraform.io/providers/hashicorp/tfe/0.74.1/docs/resources/variable) (resource)
+- [tfe_variable.vault_provider_auth](https://registry.terraform.io/providers/hashicorp/tfe/0.74.1/docs/resources/variable) (resource)
+- [tfe_variable.vault_run_role](https://registry.terraform.io/providers/hashicorp/tfe/0.74.1/docs/resources/variable) (resource)
+- [vault_auth_backend.userpass](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/auth_backend) (resource)
+- [vault_generic_endpoint.platform_admin_user](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/generic_endpoint) (resource)
+- [vault_generic_endpoint.vault_admin_user](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/generic_endpoint) (resource)
+- [vault_identity_entity.platform_admin_entity](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_entity) (resource)
+- [vault_identity_entity.vault_admin_entity](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_entity) (resource)
+- [vault_identity_entity_alias.platform_admin_alias](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_entity_alias) (resource)
+- [vault_identity_entity_alias.vault_admin_alias](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_entity_alias) (resource)
+- [vault_identity_group.platform_admin_group](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_group) (resource)
+- [vault_identity_group.vault_admin_group](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_group) (resource)
+- [vault_identity_group_member_entity_ids.platform_admin_group_members](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_group_member_entity_ids) (resource)
+- [vault_identity_group_member_entity_ids.vault_admin_group_members](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/identity_group_member_entity_ids) (resource)
+- [vault_jwt_auth_backend.jwt](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/jwt_auth_backend) (resource)
+- [vault_jwt_auth_backend_role.hcp_terraform_vault](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/jwt_auth_backend_role) (resource)
+- [vault_policy.automation](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/policy) (resource)
+- [vault_policy.platform_admin](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/policy) (resource)
+- [vault_policy.vault_admin](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/policy) (resource)
 
 ## Outputs
 
