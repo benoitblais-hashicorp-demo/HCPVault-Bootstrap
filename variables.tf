@@ -35,7 +35,7 @@ variable "jwt_role_name" {
 variable "jwt_terraform_organization_name" {
   type        = string
   description = "(Optional) Terraform organization name for bound claims in JWT authentication."
-  default     = "benoitblais-hashicorp-demo"
+  default     = "benoitblais-hashicorp"
 }
 
 variable "jwt_tfc_audience" {
