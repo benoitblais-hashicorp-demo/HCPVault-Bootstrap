@@ -32,10 +32,10 @@ variable "jwt_role_name" {
   default     = "hcp-terraform-vault"
 }
 
-variable "jwt_terraform_project_name" {
+variable "jwt_terraform_organization_name" {
   type        = string
-  description = "(Optional) Terraform project name for bound claims in JWT authentication."
-  default     = "HCP Vault"
+  description = "(Optional) Terraform organization name for bound claims in JWT authentication."
+  default     = "benoitblais-hashicorp-demo"
 }
 
 variable "jwt_tfc_audience" {

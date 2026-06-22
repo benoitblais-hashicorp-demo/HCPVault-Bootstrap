@@ -155,7 +155,7 @@ resource "vault_policy" "automation" {
   policy = file("${path.module}/policies/automation.hcl")
 }
 
-# JWT role for HCP Terraform targeting HCP Vault project
+# JWT role for HCP Terraform targeting the entire organization.
 resource "vault_jwt_auth_backend_role" "hcp_terraform_vault" {
   backend        = vault_jwt_auth_backend.jwt.path
   role_name      = var.jwt_role_name
@@ -163,7 +163,7 @@ resource "vault_jwt_auth_backend_role" "hcp_terraform_vault" {
 
   bound_audiences = [var.jwt_tfc_audience]
   bound_claims = {
-    "terraform_project_name" = var.jwt_terraform_project_name
+    "terraform_organization_name" = var.jwt_terraform_organization_name
   }
 
   user_claim             = var.jwt_user_claim
