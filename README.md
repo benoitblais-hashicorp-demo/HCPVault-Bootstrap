@@ -111,7 +111,7 @@ Description: (Optional) Terraform organization name for bound claims in JWT auth
 
 Type: `string`
 
-Default: `"benoitblais-hashicorp-demo"`
+Default: `"benoitblais-hashicorp"`
 
 ### <a name="input_jwt_tfc_audience"></a> [jwt\_tfc\_audience](#input\_jwt\_tfc\_audience)
 
