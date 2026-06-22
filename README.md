@@ -29,14 +29,16 @@ Configure the Vault provider using environment variables:
 
 - **Userpass Authentication**: Configures userpass auth method at `userpass-admin` path for administrative access
 - **User Management**: Creates two administrative users, both fully integrated into Vault's identity system:
-  - `superadmin` - User with superadmin policy (full access), identity entity, group, and alias
-  - `opsadmin` - User with admin policy (administrative capabilities), identity entity, group, and alias
+  - `platform-admin` - User with platform-admin policy (full access), identity entity, group, and alias
+  - `vault-admin` - User with vault-admin policy (administrative capabilities), identity entity, group, and alias
 - **Policy Management**: Manages policies from external HCL files:
-  - Superadmin policy (`policies/superadmin.hcl`) - Full access to all Vault paths
-  - Admin policy (`policies/admins.hcl`) - Administrative permissions
-- **Identity System**: Configures Vault identity entities, groups, and aliases for both users. The `opsadmin` group is also a member of itself for demonstration of group nesting.
+  - Platform-admin policy (`policies/platform-admin.hcl`) - Full access to all Vault paths
+  - Vault-admin policy (`policies/vault-admin.hcl`) - Administrative permissions
+  - Automation policy (`policies/automation.hcl`) - HCP Terraform automation permissions
+- **Identity System**: Configures Vault identity entities, groups, and aliases for both users.
 - **JWT Authentication**: Enables JWT/OIDC authentication for HCP Terraform integration
-- **HCP Terraform Integration**: Configures JWT role for HCP Terraform workloads in the "HCP Vault" project
+- **HCP Terraform Integration**: Configures JWT role for HCP Terraform workloads across the entire HCP Terraform organization
+- **TFE Variable Set Integration**: Optionally writes Vault environment variables into an HCP Terraform variable set
 - **Random Password Generation**: Generates secure, complex passwords for all users (24 characters with special characters)
 
 ## Documentation
@@ -103,13 +105,13 @@ Type: `string`
 
 Default: `"hcp-terraform-vault"`
 
-### <a name="input_jwt_terraform_project_name"></a> [jwt\_terraform\_project\_name](#input\_jwt\_terraform\_project\_name)
+### <a name="input_jwt_terraform_organization_name"></a> [jwt\_terraform\_organization\_name](#input\_jwt\_terraform\_organization\_name)
 
-Description: (Optional) Terraform project name for bound claims in JWT authentication.
+Description: (Optional) Terraform organization name for bound claims in JWT authentication.
 
 Type: `string`
 
-Default: `"HCP Vault"`
+Default: `"benoitblais-hashicorp-demo"`
 
 ### <a name="input_jwt_tfc_audience"></a> [jwt\_tfc\_audience](#input\_jwt\_tfc\_audience)
 
