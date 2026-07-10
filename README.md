@@ -51,7 +51,7 @@ The following requirements are needed by this module:
 
 - <a name="requirement_random"></a> [random](#requirement\_random) (3.9.0)
 
-- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.78.0)
+- <a name="requirement_tfe"></a> [tfe](#requirement\_tfe) (0.79.0)
 
 - <a name="requirement_vault"></a> [vault](#requirement\_vault) (5.7.0)
 
@@ -255,11 +255,11 @@ The following resources are used by this module:
 
 - [random_password.platform_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.9.0/docs/resources/password) (resource)
 - [random_password.vault_admin_password](https://registry.terraform.io/providers/hashicorp/random/3.9.0/docs/resources/password) (resource)
-- [tfe_variable.vault_addr](https://registry.terraform.io/providers/hashicorp/tfe/0.78.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_auth_path](https://registry.terraform.io/providers/hashicorp/tfe/0.78.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_namespace](https://registry.terraform.io/providers/hashicorp/tfe/0.78.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_provider_auth](https://registry.terraform.io/providers/hashicorp/tfe/0.78.0/docs/resources/variable) (resource)
-- [tfe_variable.vault_run_role](https://registry.terraform.io/providers/hashicorp/tfe/0.78.0/docs/resources/variable) (resource)
+- [tfe_variable.vault_addr](https://registry.terraform.io/providers/hashicorp/tfe/0.79.0/docs/resources/variable) (resource)
+- [tfe_variable.vault_auth_path](https://registry.terraform.io/providers/hashicorp/tfe/0.79.0/docs/resources/variable) (resource)
+- [tfe_variable.vault_namespace](https://registry.terraform.io/providers/hashicorp/tfe/0.79.0/docs/resources/variable) (resource)
+- [tfe_variable.vault_provider_auth](https://registry.terraform.io/providers/hashicorp/tfe/0.79.0/docs/resources/variable) (resource)
+- [tfe_variable.vault_run_role](https://registry.terraform.io/providers/hashicorp/tfe/0.79.0/docs/resources/variable) (resource)
 - [vault_auth_backend.userpass](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/auth_backend) (resource)
 - [vault_generic_endpoint.platform_admin_user](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/generic_endpoint) (resource)
 - [vault_generic_endpoint.vault_admin_user](https://registry.terraform.io/providers/hashicorp/vault/5.7.0/docs/resources/generic_endpoint) (resource)
